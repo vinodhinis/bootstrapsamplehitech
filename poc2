@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Employee Details</title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+    <script src="Scripts/angular.min.js"></script>
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {
+            height: 1500px;
+        }
+        .col-sm-3
+        {
+            position:relative;
+    float:right;
+        }
+        .navbar-brand
+        {
+            position:relative;
+            align-content:center;
+        }
+       
+
+
+        .navbar {
+      font-family: Montserrat, sans-serif;
+      margin-bottom: 0;
+      background-color: #2d2d30;
+      border: 0;
+      font-size: 11px !important;
+      letter-spacing: 4px;
+      opacity: 0.9;
+  }
+  .navbar li a, .navbar .navbar-brand { 
+      color: #d5d5d5 !important;
+  }
+  .navbar-nav li a:hover {
+      color: #fff !important;
+  }
+  .navbar-nav li.active a {
+      color: #fff !important;
+      background-color: #29292c !important;
+  }
+  .navbar-default .navbar-toggle {
+      border-color: transparent;
+  }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+        
+        .container {
+            position: relative;
+            width: 200px;
+        }
+
+        .background {
+            background: white;
+            height: 148px;
+            width: 100%;
+        }
+
+        .bar {
+            box-sizing: border-box;
+            background: #BBBBBB;
+            color: white;
+            width: 100%;
+            height: 64px;
+            padding: 16px;
+        }
+
+        .wrapper {
+            box-sizing: border-box;
+            position: absolute;
+            right: 16px;
+        }
+
+        /*style form table*/
+        body {
+            background: #fafafa url(http://jackrugile.com/images/misc/noise-diagonal.png);
+            color: #444;
+            font: 100%/30px 'Helvetica Neue', helvetica, arial, sans-serif;
+            text-shadow: 0 1px 0 #fff;
+        }
+
+        strong {
+            font-weight: bold;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        table {
+            background: #f5f5f5;
+            border-collapse: separate;
+            box-shadow: inset 0 1px 0 #fff;
+            font-size: 12px;
+            line-height: 24px;
+            margin: 30px auto;
+            text-align: left;
+            width: 800px;
+        }
+
+        th {
+            background: url(http://jackrugile.com/images/misc/noise-diagonal.png), linear-gradient(#777, #444);
+            border-left: 1px solid #555;
+            border-right: 1px solid #777;
+            border-top: 1px solid #555;
+            border-bottom: 1px solid #333;
+            box-shadow: inset 0 1px 0 #999;
+            color: #fff;
+            font-weight: bold;
+            padding: 10px 15px;
+            position: relative;
+            text-shadow: 0 1px 0 #000;
+        }
+
+            th:after {
+                background: linear-gradient(rgba(255,255,255,0), rgba(255,255,255,.08));
+                content: '';
+                display: block;
+                height: 25%;
+                left: 0;
+                margin: 1px 0 0 0;
+                position: absolute;
+                top: 25%;
+                width: 100%;
+            }
+
+            th:first-child {
+                border-left: 1px solid #777;
+                box-shadow: inset 1px 1px 0 #999;
+            }
+
+            th:last-child {
+                box-shadow: inset -1px 1px 0 #999;
+            }
+
+        td {
+            border-right: 1px solid #fff;
+            border-left: 1px solid #e8e8e8;
+            border-top: 1px solid #fff;
+            border-bottom: 1px solid #e8e8e8;
+            padding: 10px 15px;
+            position: relative;
+            transition: all 300ms;
+        }
+
+            td:first-child {
+                box-shadow: inset 1px 0 0 #fff;
+            }
+
+            td:last-child {
+                border-right: 1px solid #e8e8e8;
+                box-shadow: inset -1px 0 0 #fff;
+            }
+
+        tr {
+            background: url(http://jackrugile.com/images/misc/noise-diagonal.png);
+        }
+
+            tr:nth-child(odd) td {
+                background: #f1f1f1 url(http://jackrugile.com/images/misc/noise-diagonal.png);
+            }
+
+            tr:last-of-type td {
+                box-shadow: inset 0 -1px 0 #fff;
+            }
+
+                tr:last-of-type td:first-child {
+                    box-shadow: inset 1px -1px 0 #fff;
+                }
+
+                tr:last-of-type td:last-child {
+                    box-shadow: inset -1px -1px 0 #fff;
+                }
+
+        /*tbody:hover td {
+            color: transparent;
+            text-shadow: 0 0 3px #aaa;
+        }
+
+        tbody:hover tr:hover td {
+            color: #444;
+            text-shadow: 0 .5px 0 #fff;
+        }*/
+        .center {
+    text-align: center;
+    
+}
+    </style>
+
+    
+    <script>
+        var App = angular.module("myapp", [])
+
+        App.controller("EmployeeTbl", function ($scope, $http) {
+
+
+            GetAll();
+            //display
+            function GetAll() {
+                $http.get('/api/EmployeeTbls').then(function (response) { alert("Success in getting records"); $scope.EmployeeTbl = response.data }, function () { alert("Failed") });
+            }
+
+
+            //delete
+            $scope.empDelById = function (EmpId) {
+
+                alert(EmpId);
+
+                confirm("do u want to delete Record?");
+
+                $http.delete('api/EmployeeTbls/' + EmpId).then(function (response) {
+                    $scope.color = "#349d0a";
+                    $scope.status = "Deleted";
+                    GetAll();
+                },
+                function () {
+                    $scope.color = "red";
+                    $scope.status = "Failed to Delete";
+                });
+
+            }
+            //edit
+            $scope.EmpDetails = { EmpId: "", Emp_Name: "", Mail_Id: "", Contact_No: "", Location: "" }
+            $scope.empGetById = function (EmpId) {
+                alert(EmpId);
+                $http.get('api/EmployeeTbls/' + EmpId).then(function (response) {
+                    $scope.EmployeeTbl = response.data;
+                });
+            }
+
+            $scope.UpdateEmp = function (formdata) {
+                confirm("Are u sure want to modify" + formdata.EmpId);
+                $http.put('api/EmployeeTbls/', formdata).then(function () { alert("Successfully updated"); GetAll(); }, function () {
+                    alert("Failed to update")
+                });
+            }
+            $scope.eEditable = -1;
+            //insert
+            $scope.InsertEmp = function (EmployeeTbl) {
+                alert(EmployeeTbl.EmpId);
+                alert(EmployeeTbl.Emp_Name);
+                alert(EmployeeTbl.Mail_Id);
+                alert(EmployeeTbl.Contact_No);
+                alert(EmployeeTbl.Location);
+                $http.post('api/EmployeeTbls', EmployeeTbl).then(function (response) { alert("Successfully Inserted"); GetAll(); }, function () { alert("Failed to insert") });
+            }
+
+            //new insert
+            $scope.NewInsert = function (EmployeeTbl) {
+                alert(EmployeeTbl.EmpId);
+                $http.post('api/EmployeeTbls', EmployeeTbl).then(function (response) { alert("success"); GetAll(); }, function () { alert("failed") });
+            }
+
+            //search
+            $scope.SearchEmp = function (EmployeeTbl) {
+                alert(EmployeeTbl.EmpId);
+
+                $http.get('api/EmployeeTbls/' + EmployeeTbl.EmpId).then(function (response) {
+                    $scope.EmployeeTbl = response.data;
+                });
+            }
+
+        });
+       
+        //delete
+        //$scope.empDelById = function (EmpId) {
+
+        //    alert(EmpId);
+
+        //    confirm("do u want to delete Record?");
+
+        //    $http.delete('api/EmployeeTbls/' + EmpId).then(function (response) {
+        //        $scope.color = "#349d0a";
+        //        $scope.status = "Deleted";
+        //        GetAll();
+        //    },
+        //    function () {
+        //        $scope.color = "red";
+        //        $scope.status = "Failed to Delete";
+        //    });
+        //}
+
+      
+
+
+
+    </script>
+</head>
+<body ng-app="myapp" ng-controller="EmployeeTbl">
+  <!-- portion for header -->
+
+    <nav class="navbar navbar-default" role="navigation">
+       
+        
+        
+       
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"  >
+            <ul class="nav navbar-nav" >
+               <li class="active"><a href="newpage.html">HOME</a></li>
+               
+            </ul>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><center>AZURE PYROTECHNICS</center></a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" ng-model="EmployeeTbl.EmpId" placeholder="Search...." name="q">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit" ng-model="EmployeeTbl.EmpId"><i class="glyphicon glyphicon-search" ></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+           
+        </div><!-- /.navbar-collapse -->
+    </nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+    <!-- portion for header -->
+    <div class="container-fluid">
+        <div class="row content">
+            
+            
+
+            <div class="col-sm-9">
+                <h4><small>View all User details here</small></h4>
+                <hr>
+                <h2>Azure Pyrotechnics</h2>
+                <h5>
+                    <span class="glyphicon glyphicon-time"></span>The Server Time is:<strong>
+                        <span id="time"></span>
+                    </strong>
+                </h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Employee Id</th>
+                        <th>Name</th>
+                        <th>Mail Id</th>
+                        <th>Contact No</th>
+                        <th>Location</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <!--<tr>
+                       <td><p><input type="text" ng-model="EmployeeTbl.EmpId" /></p></td>
+                   </tr>-->
+                    <tr ng-repeat="item in EmployeeTbl | filter:EmployeeTbl.EmpId ">
+                        <td>
+                            {{ item.EmpId}}
+
+                        </td>
+                        <td>
+                            {{item.Emp_Name}}
+                        </td>
+                        <td>
+                            {{item.Mail_Id}}
+                        </td>
+                        <td>
+                            {{item.Contact_No}}
+                        </td>
+                        <td>
+                            {{item.Location}}
+                        </td>
+                        <td>
+                            
+                                <a href="#"> <i class="fa fa-pencil-square-o" style="font-size:25px; color:cornflowerblue" ng-click="empGetById(item.EmpId)	"></i></a>&nbsp;&nbsp;&nbsp;
+                                <a href="#"><i class="fa fa-times-rectangle" style="font-size:25px;color:red" ng-click="empDelById(item.EmpId)"></i></a>
+                               
+                                 <!--<a class="red-text"><i class="fa fa-times"></i><input type="button" value="Delete" ng-click="empDelById(item.EmpId)" /></a>-->
+                         
+                                </td>
+
+
+                    </tr>
+                    
+                </tbody>
+                </table>
+                <div class="center">
+                   <!--<button type="button" class="btn btn-info" ng-click="InsertEmp(EmployeeTbl)">Click here to Insert New Record</button><input type="button" value="Insert New Record" />-->
+                </div>
+                </div><!--end of col-9-->
+            <div class="col-sm-3 sidenav">
+                <br />
+                <h4>User Details</h4>
+
+                <!--place to add add details form-->
+                <div class="UpdateEmp">
+                    <h5>Enter the modified data</h5>
+                    <form class="form-inline" >
+                        <div class="input-group">
+
+                            <input type="text" class="form-control" id="id" placeholder="Employee Id" ng-model="EmployeeTbl.EmpId" /><br />
+                        </div>
+                        <div class="form-group">
+                            <br />
+                            <input type="text" class="form-control" id="id" placeholder="Employee Name" ng-model="EmployeeTbl.Emp_Name" /><br />
+                        </div>
+                        <div class="form-group">
+                            <br />
+                            <input type="text" class="form-control" id="id" placeholder="Employee mail Id" ng-model="EmployeeTbl.Mail_Id" /><br />
+                        </div>
+                        <div class="form-group">
+                            <br />
+                            <input type="text" class="form-control" id="id" placeholder="Phone Number" ng-model="EmployeeTbl.Contact_No" /><br />
+                        </div>
+                        <div class="form-group">
+                            <br />
+                            <input type="text" class="form-control" id="id" placeholder="Office Location" ng-model="EmployeeTbl.Location" /><br />
+                        </div><br />
+                        <div>
+                            <br />
+                           
+                                <!--<button type="button" class="btn btn-success" ng-click="UpdateEmp(EmployeeTbl)">Update</button>-->
+                            <button type="button" class="btn btn-info" ng-click="NewInsert(EmployeeTbl)">Click here to Insert New Record</button>
+                                
+                                
+</div>
+                        <!--<div>
+                            <button type="button" class="btn btn-info" ng-click="InsertEmp(EmployeeTbl)">ADD</button>
+                        </div>-->
+
+                    </form>
+                    <!--<span style="border:1px solid black">{{EmployeeTbl.EmpId}}</span>
+            <input type="text" ng-model="EmployeeTbl.EmpId" />
+            <input type="text" ng-model="EmployeeTbl.Emp_Name" />
+            <input type="text" ng-model="EmployeeTbl.Mail_Id" />
+            <input type="text" ng-model="EmployeeTbl.Contact_No" />
+            <input type="text" ng-model="EmployeeTbl.Location" />
+            <input type="button" value="Update" ng-click="UpdateEmp(EmployeeTbl)" />-->
+
+
+                </div><br />
+                <br />
+                <!--<div>
+            <h4>Enter the Employee Id to search</h4>
+            <input type="text" ng-model="EmployeeTbl.EmpId" />
+            <input type="button" value="Search" ng-click="SearchEmp(EmployeeTbl)" />
+        </div>-->
+                <!--place to add add details form-->
+
+                <!--<h5>Enter the Employee Id to search</h5>-->
+                <!--<div class="input-group">
+                    <input type="text" ng-model="EmployeeTbl.EmpId" class="form-control" placeholder="Search User..">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" ng-click="SearchEmp(EmployeeTbl)">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>-->
+            </div>
+
+            </div>
+        </div>
+   
+
+    <footer class="container-fluid">
+        <h3>All rights reserved @Tata Consultancy Services</h3>
+    </footer>
+
+</body>
+</html>
+
